@@ -9,12 +9,13 @@
     :root {
       --bg: #faf6f0;
       --card: #ffffff;
-      --text: #1f2937;
-      --muted: #5b6472;
+      --text: #111827;
+      --muted: #4b5563;
       --accent: #b87333;
       --accent-dark: #8f5522;
       --border: #e7ddd1;
       --soft: #fffaf4;
+      --soft-2: #f3e4d6;
     }
     * { box-sizing: border-box; }
     body {
@@ -37,7 +38,7 @@
       display: inline-block;
       padding: 6px 12px;
       border-radius: 999px;
-      background: #f3e4d6;
+      background: var(--soft-2);
       color: var(--accent-dark);
       font-size: 0.9rem;
       font-weight: 700;
@@ -45,7 +46,9 @@
     }
     h1, h2, h3 { color: var(--text); line-height: 1.15; }
     h1 { font-size: clamp(2.3rem, 5vw, 4.5rem); margin: 18px 0 14px; }
-    .lead { font-size: 1.18rem; max-width: 760px; color: var(--muted); }
+    h2 { font-size: 1.8rem; }
+    h3 { margin-top: 0; }
+    .lead { font-size: 1.18rem; max-width: 780px; color: var(--muted); }
     .grid { display: grid; gap: 18px; grid-template-columns: repeat(12, 1fr); margin-top: 24px; }
     .card {
       background: var(--card);
@@ -58,6 +61,7 @@
     .span-6 { grid-column: span 6; }
     .span-12 { grid-column: span 12; }
     ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
     .badge-list { display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; }
     .badge { background: var(--soft); border: 1px solid var(--border); border-radius: 999px; padding: 8px 12px; color: var(--text); }
     .cta {
@@ -74,11 +78,57 @@
     .video-card { display: grid; grid-template-columns: 280px 1fr; gap: 18px; align-items: center; }
     .video-thumb-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #000; }
     .video-thumb { display: block; width: 100%; height: auto; }
-    .video-card { display: grid; grid-template-columns: 280px 1fr; gap: 18px; align-items: center; }
-    .video-thumb-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #000; }
-    .video-thumb { display: block; width: 100%; height: auto; }
-    .section-title { margin: 52px 0 14px; font-size: 1.8rem; }
+    .section-title { margin: 52px 0 14px; }
     .small { color: var(--muted); font-size: 0.98rem; }
+    .highlight {
+      background: #fffdf9;
+      border-left: 5px solid var(--accent);
+    }
+    .step-list {
+      counter-reset: steps;
+      display: grid;
+      gap: 12px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .step-list li {
+      counter-increment: steps;
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px 14px 52px;
+      position: relative;
+      margin: 0;
+    }
+    .step-list li::before {
+      content: counter(steps);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .product-kicker {
+      color: var(--accent-dark);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .source-list {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
     footer { padding: 28px 0 18px; color: var(--muted); font-size: 0.95rem; }
     @media (max-width: 820px) {
       .span-4, .span-6 { grid-column: span 12; }
@@ -98,8 +148,9 @@
         <span class="badge">Hardware setup</span>
         <span class="badge">Parent training</span>
         <span class="badge">Subscription support</span>
+        <span class="badge">Free basic setup guidance</span>
       </div>
-      <a class="cta" href="#contact">Talk about your home setup</a>
+      <a class="cta" href="#basic-setup">See the basic setup</a>
     </section>
 
     <h2 class="section-title">The problem</h2>
@@ -124,6 +175,101 @@
           <p><a href="https://www.youtube.com/watch?v=XBedpPCv5c4" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>
         </div>
       </div>
+    </div>
+
+    <h2 class="section-title" id="basic-setup">Basic setup parents can start with</h2>
+    <div class="card highlight">
+      <h3>A strong home setup does not need to start with expensive subscriptions</h3>
+      <p>The practical foundation is usually the home router plus the free controls already available on Android and iPhone. The router controls the household network. The phone-level tools control screen time, apps, and content on the child’s device.</p>
+      <p class="small">This gives families a realistic starting point: use the router to manage devices on Wi-Fi, then use Google Family Link or Apple Screen Time to manage the child’s phone directly.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card span-4">
+        <div class="product-kicker">Home router / network control</div>
+        <h3>Ubiquiti UniFi Cloud Gateway Ultra</h3>
+        <p class="small">The UCG-Ultra is a compact UniFi gateway for home and small networks. It includes routing, firewall, traffic identification, content filtering, ad blocking, intrusion prevention, VLAN/subnet traffic segmentation, and internet quality reporting.</p>
+        <ul class="small">
+          <li>Useful for seeing what devices are on the home network.</li>
+          <li>Helps create firewall and filtering rules for devices or groups of devices.</li>
+          <li>Can separate household devices into different networks, such as parent devices, child devices, and guest devices.</li>
+          <li>Gives parents better visibility than a basic ISP modem/router.</li>
+        </ul>
+      </div>
+
+      <div class="card span-4">
+        <div class="product-kicker">Android / Google accounts</div>
+        <h3>Google Family Link</h3>
+        <p class="small">Family Link is Google’s free parental control app. It helps parents set screen-time limits, downtime, school-time schedules, app limits, app approvals, location sharing, and Google account settings for children and teens.</p>
+        <ul class="small">
+          <li>Best starting point for Android phones and supervised Google accounts.</li>
+          <li>Can set daily device limits and individual app limits.</li>
+          <li>Can block or approve apps and manage Google service settings.</li>
+          <li>Can help locate a child’s device when location sharing is enabled.</li>
+        </ul>
+      </div>
+
+      <div class="card span-4">
+        <div class="product-kicker">iPhone / iPad</div>
+        <h3>Apple Screen Time</h3>
+        <p class="small">Screen Time is built into iOS and iPadOS. With Family Sharing, a parent or guardian can manage a child’s screen time from their own Apple device, including downtime, app limits, content restrictions, communication limits, and Screen Time passcodes.</p>
+        <ul class="small">
+          <li>Best starting point for iPhones and iPads.</li>
+          <li>Can schedule downtime and set app/category limits.</li>
+          <li>Can block age-inappropriate content, apps, downloads, and websites.</li>
+          <li>Can show reports on apps and websites used most.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title">Suggested free configuration path</h2>
+    <div class="grid">
+      <div class="card span-6">
+        <h3>Network-level controls</h3>
+        <ol class="step-list">
+          <li>List every device in the house: parent phones, child phones, tablets, laptops, consoles, TVs, and guest devices.</li>
+          <li>Rename each device in the router so the family can tell who owns what.</li>
+          <li>Create a separate child device group or network where possible.</li>
+          <li>Apply sensible router rules: block risky categories, restrict unnecessary device-to-device access, and use schedules for internet access where appropriate.</li>
+          <li>Review traffic and usage patterns so the family can adjust rules based on real behaviour, not guesswork.</li>
+        </ol>
+      </div>
+      <div class="card span-6">
+        <h3>Phone-level controls</h3>
+        <ol class="step-list">
+          <li>For Android, install and configure Google Family Link with the child’s supervised Google account.</li>
+          <li>For iPhone, set up Apple Family Sharing and Screen Time for the child’s Apple Account.</li>
+          <li>Set daily limits, downtime, app limits, and content restrictions.</li>
+          <li>Keep essential apps available, such as phone, maps, health, accessibility, school, or emergency communication apps.</li>
+          <li>Review the setup weekly at first, then adjust as the child’s age, school needs, and behaviour change.</li>
+        </ol>
+      </div>
+    </div>
+
+    <h2 class="section-title">What IT Parent can help with</h2>
+    <div class="grid">
+      <div class="card span-4">
+        <h3>Home audit</h3>
+        <p class="small">Identify all devices, internet entry points, Wi-Fi networks, accounts, and the current gaps that let children bypass rules.</p>
+      </div>
+      <div class="card span-4">
+        <h3>Router setup</h3>
+        <p class="small">Configure a practical router structure, device names, child device groups, firewall rules, schedules, filtering, and monitoring basics.</p>
+      </div>
+      <div class="card span-4">
+        <h3>Parent training</h3>
+        <p class="small">Show parents how to maintain the system themselves, approve changes, review reports, and adjust rules without needing ongoing technical help.</p>
+      </div>
+    </div>
+
+    <div class="card source-list">
+      <strong>Sources checked:</strong>
+      <ul>
+        <li><a href="https://techspecs.ui.com/unifi/cloud-gateways/ucg-ultra?subcategory=all-cloud-gateways" target="_blank" rel="noopener noreferrer">Ubiquiti UniFi Cloud Gateway Ultra technical specifications</a></li>
+        <li><a href="https://families.google/familylink" target="_blank" rel="noopener noreferrer">Google Family Link overview</a></li>
+        <li><a href="https://support.google.com/families/answer/15957417?hl=en" target="_blank" rel="noopener noreferrer">Google Family Link app time limits</a></li>
+        <li><a href="https://support.apple.com/en-us/108806" target="_blank" rel="noopener noreferrer">Apple Screen Time parental controls</a></li>
+      </ul>
     </div>
 
     <h2 class="section-title">Ideal for...</h2>
